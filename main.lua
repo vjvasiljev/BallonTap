@@ -21,3 +21,10 @@ local physics = require('physics');
 physics.start()
 
 physics.addBody(platform, 'static');
+physics.addBody(balloon, "dynamic", {radius = 50, bounce = 0.5});
+
+local function pushBalloon()
+    balloon:applyLinearImpulse(0, -1, balloon.x, balloon.y)
+end
+
+balloon:addEventListener('tap', pushBalloon)
